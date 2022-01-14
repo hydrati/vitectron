@@ -1,0 +1,10 @@
+{
+    "name": "vite-vue-electron-template",
+    "version": "0.0.0",
+    "authors": [
+        "Cladonia Frontend Development Team",
+        "Hydrogen <3038094028@qq.com>"
+    ],
+    "license": "MIT",
+    "private": true
+}
