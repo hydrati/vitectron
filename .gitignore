@@ -1,6 +1,7 @@
 # Build
 temp
 dist
+release
 
 # Logs
 logs

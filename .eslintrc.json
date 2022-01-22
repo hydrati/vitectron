@@ -17,6 +17,12 @@
         "vue",
         "@typescript-eslint"
     ],
+    "ignorePatterns": [
+        "dist/**/*",
+        "node_modules/**/*",
+        "public/**/*",
+        "resources/**/*"
+    ],
     "rules": {
         "no-trailing-spaces": "off",
         "vue/multi-word-component-names": "off"

@@ -3,6 +3,7 @@ import path from 'path'
 import { getStartupUrl } from './utils'
 import { contentManager } from './utils/contents'
 import { protocolScheme, registerScheme } from './utils/protocol'
+import './utils/bridge'
 
 protocol.registerSchemesAsPrivileged([
   protocolScheme
@@ -15,11 +16,11 @@ const bootstrap = async () => {
   const [window, id] = contentManager.createWindow({
     width: 800,
     height: 600,
-    show: false,
+    show: true,
     webPreferences: {
       devTools: true,
       nodeIntegration: true,
-      preload: path.resolve(__dirname, 'index.preload.js')
+      preload: path.resolve(__dirname, 'preload_main.js')
     }
   }, 'main')
 

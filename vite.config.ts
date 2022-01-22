@@ -15,7 +15,9 @@ export default defineConfig({
     vue(),
     jsx(),
     electron({
-      config: mainConfig
+      config: mainConfig,
+      path: 'src/app',
+      args: ['--inspect=5858']
     })
   ]
 })

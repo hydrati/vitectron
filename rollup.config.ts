@@ -7,47 +7,76 @@ import eslint from '@rollup/plugin-eslint'
 import json from '@rollup/plugin-json'
 import cjs from '@rollup/plugin-commonjs'
 import node from '@rollup/plugin-node-resolve'
+import alias from '@rollup/plugin-alias'
 
 const main = (dev: boolean) => defineConfig({
   input: path.resolve(__dirname, 'src', 'app', 'index.main.ts'),
   plugins: [
     eslint(),
     json(),
-    node(),
+    alias({
+      entries: [
+        { find: 'uuid', replacement: require.resolve('uuid') }
+      ]
+    }),
+    node({
+      browser: false,
+      mainFields: ['module', 'main']
+    }),
     cjs(),
-    !dev
-      ? replace({
-        'process.env.NODE_ENV': process.env.NODE_ENV,
-        'process.env.VITE_URL': ' '
-      })
-      : undefined,
     esbuild({
       tsconfig: path.resolve(__dirname, 'tsconfig.json'),
-      minify: true,
-      minifyIdentifiers: true,
-      minifyWhitespace: true,
-      minifySyntax: true,
-      sourceMap: true
-    })
-  ]
+      minify: !dev,
+      minifyIdentifiers: !dev,
+      minifyWhitespace: !dev,
+      minifySyntax: !dev,
+      sourceMap: dev
+    }),
+    !dev
+      ? replace({
+        values: {
+          'process.env.NODE_ENV': process.env.NODE_ENV,
+          'process.env.VITE_URL': 'null'
+        },
+        preventAssignment: true
+      })
+      : undefined
+  ],
+  output: {
+    file: 'dist/main/index.js',
+    format: 'cjs'
+  }
 })
 
-const preload = (_dev: boolean) => defineConfig({
+const preload = (dev: boolean) => defineConfig({
   input: path.resolve(__dirname, 'src', 'app', 'index.preload.ts'),
   plugins: [
     eslint(),
     json(),
-    node(),
-    cjs(),
+    node({
+      browser: false
+    }),
+    cjs({
+      
+    }),
+    alias({
+      entries: [
+        { find: 'uuid', replacement: require.resolve('uuid') }
+      ]
+    }),
     esbuild({
       tsconfig: path.resolve(__dirname, 'tsconfig.json'),
-      minify: true,
-      minifyIdentifiers: true,
-      minifyWhitespace: true,
-      minifySyntax: true,
-      sourceMap: true
+      minify: !dev,
+      minifyIdentifiers: !dev,
+      minifyWhitespace: !dev,
+      minifySyntax: !dev,
+      sourceMap: dev
     })
-  ]
+  ],
+  output: {
+    file: 'dist/main/preload_main.js',
+    format: 'cjs'
+  }
 })
 
 export default { main, preload }

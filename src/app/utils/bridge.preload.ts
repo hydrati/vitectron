@@ -13,11 +13,10 @@ export interface IpcWindowBridge {
   postMessageToMain (channel: string, message: any, transferable?: MessagePort[]): void;
   sendToHost (channel: string, ...args: any[]): void;
   sendTo (webContentsId: number, ...args: any[]): void;
-  getIpc (): IpcRenderer
-}
+}   
 
 export interface IpcWindowBridgePreload extends IpcWindowBridge {
-  getIpc (): IpcRenderer
+  _getIpc (): IpcRenderer
 }
 
 namespace IpcWindowBridgeStatic {
@@ -63,18 +62,12 @@ namespace IpcWindowBridgeStatic {
     )
   }
 
-  const {
-    sendToHost: _sendToHost, sendTo: _sendTo, send: _sendToMain,
-    invoke: _invokeMain, postMessage: _postMessageToMain
+  export const {
+    sendToHost, sendTo, send: sendToMain,
+    invoke: invokeMain, postMessage: postMessageToMain
   } = ipcRenderer
 
-  export const sendToHost = _sendToHost.bind(ipcRenderer)
-  export const sendTo = _sendTo.bind(ipcRenderer)
-  export const sendToMain = _sendToMain.bind(ipcRenderer)
-  export const invokeMain = _invokeMain.bind(ipcRenderer)
-  export const postMessageToMain = _postMessageToMain.bind(ipcRenderer)
-
-  export function getIpc () {
+  export function _getIpc () {
     return ipcRenderer
   }
 }

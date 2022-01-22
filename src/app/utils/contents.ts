@@ -15,7 +15,7 @@ import { IterableWeakMap } from './map'
 class ContentManager {
   private _windows = new Map<BrowserWindow, string>()
   private _contents = new IterableWeakMap<WebContents, string>()
-  private _window_name = new Map<PropertyKey, string>()
+  private _names = new Map<PropertyKey, string>()
 
   createWindow (opts?: BrowserWindowConstructorOptions, name?: PropertyKey): [BrowserWindow, string] {
     const id = v4()
@@ -35,17 +35,17 @@ class ContentManager {
 
   setWindowByName (name: PropertyKey, win: BrowserWindow): boolean {
     if (this._windows.has(win)) {
-      this._window_name.set(name, this._windows.get(win)!)
+      this._names.set(name, this._windows.get(win)!)
       return true
     } else return false
   }
 
   getWindowByName (name: PropertyKey) {
-    const id = this._window_name.get(name)
+    const id = this._names.get(name)
     if (id === undefined) return undefined
     const w = this.getWindowById(id)
     if (w === undefined) {
-      this._window_name.delete(name)
+      this._names.delete(name)
       return undefined
     } else {
       return w
@@ -54,12 +54,12 @@ class ContentManager {
 
   getWindowIdByName (name: PropertyKey) {
     if (this.getWindowByName(name) !== undefined) {
-      return this._window_name.get(name)!
+      return this._names.get(name)!
     }
   }
 
   removeWindowName (name: PropertyKey) {
-    return this._window_name.delete(name)
+    return this._names.delete(name)
   }
 
   unholdWindow (window: BrowserWindow) {
