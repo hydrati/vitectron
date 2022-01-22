@@ -35,7 +35,7 @@ const main = (dev: boolean) => defineConfig({
     !dev
       ? replace({
         values: {
-          'process.env.NODE_ENV': process.env.NODE_ENV,
+          'process.env.NODE_ENV': `"${process.env.NODE_ENV}"`,
           'process.env.VITE_URL': 'null'
         },
         preventAssignment: true
@@ -44,7 +44,8 @@ const main = (dev: boolean) => defineConfig({
   ],
   output: {
     file: 'dist/main/index.js',
-    format: 'cjs'
+    format: 'cjs',
+    sourcemap: dev
   }
 })
 
@@ -75,7 +76,8 @@ const preload = (dev: boolean) => defineConfig({
   ],
   output: {
     file: 'dist/main/preload_main.js',
-    format: 'cjs'
+    format: 'cjs',
+    sourcemap: dev
   }
 })
 

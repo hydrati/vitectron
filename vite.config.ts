@@ -10,7 +10,8 @@ import mainConfig from './rollup.config'
 export default defineConfig({
   plugins: [
     eslint({
-      exclude: ['src/assets/**/*', 'node_modules/**/*']
+      exclude: ['src/assets/**/*', 'node_modules/**/*'],
+      fix: true
     }),
     vue(),
     jsx(),
