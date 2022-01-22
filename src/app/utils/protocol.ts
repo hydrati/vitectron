@@ -26,15 +26,17 @@ async function handleRequest (request: ProtocolRequest): Promise<ProtocolRespons
     pathname = '/index.html'
   }
 
+  const toPath = path.resolve(__dirname, '..', '.' + pathname)
+
   try {
-    await access(pathname, constants.R_OK | constants.F_OK)
+    await access(toPath, constants.R_OK | constants.F_OK)
   } catch {
     pathname = '/index.html'
   }
 
   return {
-    mimeType: getType(pathname) ?? 'text/plain',
-    data: createReadStream(path.resolve(__dirname, 'renderer', pathname))
+    mimeType: getType(toPath) ?? 'text/plain',
+    data: createReadStream(toPath)
   }
 }
 
