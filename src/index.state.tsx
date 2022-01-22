@@ -6,7 +6,7 @@ export const useStore = defineStore({
     count: 0
   }),
   actions: {
-    addOne() {
+    addOne () {
       this.count += 1
     }
   }

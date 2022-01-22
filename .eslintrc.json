@@ -18,5 +18,7 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "no-trailing-spaces": "off",
+        "vue/multi-word-component-names": "off"
     }
 }

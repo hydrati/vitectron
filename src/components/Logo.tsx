@@ -18,10 +18,9 @@ const style = css`
   border-radius: 50%;
 }`
 
-
 export default defineComponent({
   name: 'Logo',
-  setup() {
+  setup () {
     return () => (
       <div class={style}>
         <img class="logo" src={LogoVue}></img>

@@ -2,6 +2,7 @@ import { protocol, CustomScheme, ProtocolRequest, ProtocolResponse } from 'elect
 import { createReadStream, constants } from 'fs'
 import { access } from 'fs/promises'
 import { getType } from 'mime'
+import path from 'path'
 
 export const PROTOCOL_PREFIX = 'app'
 export const protocolScheme: CustomScheme = {
@@ -33,11 +34,13 @@ async function handleRequest (request: ProtocolRequest): Promise<ProtocolRespons
 
   return {
     mimeType: getType(pathname) ?? 'text/plain',
-    data: createReadStream(pathname)
+    data: createReadStream(path.resolve(__dirname, 'renderer', pathname))
   }
 }
 
-protocol.registerStreamProtocol(
-  PROTOCOL_PREFIX,
-  (req, callback) => handleRequest(req).then(callback)
-)
+export function registerScheme () {
+  protocol.registerStreamProtocol(
+    PROTOCOL_PREFIX,
+    (req, callback) => handleRequest(req).then(callback)
+  )
+}

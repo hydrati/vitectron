@@ -6,15 +6,15 @@ import HelloWorld from '../components/HelloWorld'
 import Logo from '../components/Logo'
 
 export default defineComponent({
-  name: 'Page:Home',
-  setup() {
+  name: 'PageHome',
+  setup () {
     return () => (
       <>
         <Logo />
         <HelloWorld message="Hello Vue + Electron" />
         <p>
           <RouterLink to="/blank">Next page</RouterLink>
-          {" | "}
+          {' | '}
           <Counter />
         </p>
       </>

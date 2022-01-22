@@ -1,12 +1,11 @@
 import { defineComponent } from 'vue'
 
-
 export default defineComponent({
   name: 'HelloWorld',
   props: {
     message: String
   },
-  setup(props) {
+  setup (props) {
     return () => (
       <>
         <h1>{props.message}</h1>
@@ -16,7 +15,7 @@ export default defineComponent({
           <a href="https://marketplace.visualstudio.com/items?itemName=octref.vetur">Vetur</a>
           &nbsp;or&nbsp;
           <a href="https://github.com/johnsoncodehk/volar">Volar</a>
-          &nbsp;( if using <code>{`<script setup>`}</code> )
+          &nbsp;( if using <code>{'<script setup>'}</code> )
         </p>
         <p>See <code>README.md</code> for more information.</p>
         <br />

@@ -3,8 +3,7 @@ import { useStore } from '../index.state'
 
 export default defineComponent({
   name: 'Counter',
-  setup() {
-
+  setup () {
     const state = useStore()
     const handleClick = () => state.addOne()
 
