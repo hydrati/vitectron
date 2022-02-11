@@ -26,7 +26,6 @@ $ yarn build
 ```
 
 ## Features
-- Electron builder based on Vite plugin, it's fast!
 - `TypeScript JSX` and `CSS-in-JS`
 - Clean project structure
 - Multi-Window Manager
