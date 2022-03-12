@@ -16,10 +16,9 @@ const bootstrap = async () => {
   const [window, id] = contentManager.createWindow({
     width: 800,
     height: 600,
-    show: true,
+    show: false,
     webPreferences: {
       devTools: true,
-      nodeIntegration: true,
       preload: path.resolve(__dirname, 'preload_main.js')
     }
   }, 'main')
