@@ -16,7 +16,8 @@ export default defineConfig({
     }),
     vue(),
     babel({
-      extensions: ['.js', '.jsx', '.es6', '.es', '.mjs', '.tsx', '.ts']
+      extensions: ['.js', '.jsx', '.es6', '.es', '.mjs', '.tsx', '.ts'],
+      babelHelpers: 'bundled'
     }),
     jsx(),
     electron({
