@@ -1,8 +1,11 @@
-import { app, protocol } from 'electron'
-import path from 'path'
+import { app, protocol, dialog } from 'electron'
 import { getStartupUrl } from './utils'
 import { contentManager } from './utils/contents'
 import { protocolScheme, registerScheme } from './utils/protocol'
+
+import path from 'path'
+import os from 'os'
+import process from 'process'
 import './utils/bridge'
 
 protocol.registerSchemesAsPrivileged([
@@ -27,9 +30,22 @@ const bootstrap = async () => {
 
   window.once('ready-to-show', () => window.show())
 
-  contentManager.on(id, 'main-greet', (ev) => {
-    console.log(`Hello, from ${id}`)
-    ev.reply('greet', id)
+  contentManager.on(id, 'show-app-version', () => {
+    const detail = `App Version: ${app.getVersion()}
+Electron: ${process.versions.electron}
+Chromium: ${process.versions.chrome}
+V8: ${process.versions.v8}
+Node: ${process.versions.node}
+OpenSSL: ${process.versions.openssl}
+Zlib: ${process.versions.zlib}
+OS: ${os.version()} (${os.arch()})`
+
+    dialog.showMessageBox(window, {
+      title: 'Vitectron',
+      detail,
+      message: 'Vitectron',
+      type: 'info'
+    })
   })
 }
 
