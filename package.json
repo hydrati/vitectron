@@ -62,7 +62,7 @@
         "eslint-plugin-promise": "^4.2.1",
         "eslint-plugin-vue": "^8.3.0",
         "mime": "^3.0.0",
-        "pinia": "^2.0.9",
+        "pinia": "2.0.23",
         "rollup": "^2.66.0",
         "rollup-plugin-esbuild": "^4.8.2",
         "ts-node": "^10.4.0",
