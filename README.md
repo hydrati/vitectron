@@ -1,6 +1,7 @@
+> Vitectron 2 is WIP...
+
 # Vue Desktop Application Template
 
-[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/hyroge/vite-vue-electron)
 ![GitHub Repo stars](https://img.shields.io/github/stars/hyroge/vite-vue-electron)
 [![vue](https://img.shields.io/badge/vue-3.2.27-brightgreen.svg)](https://github.com/vuejs/vue-next)
 [![vite](https://img.shields.io/badge/vite-2.7.12-brightgreen.svg)](https://github.com/vitejs/vite)
