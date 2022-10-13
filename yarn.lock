@@ -556,10 +556,10 @@
     magic-string "^0.25.7"
     resolve "^1.17.0"
 
-"@rollup/plugin-eslint@^8.0.1":
-  version "8.0.1"
-  resolved "https://registry.npmmirror.com/@rollup/plugin-eslint/-/plugin-eslint-8.0.1.tgz#bf7462f96027613729b8a805caaa951dc23c333e"
-  integrity sha512-rTMAY4tKGBdbkHHQDaVhXNJg9tRmW7ihRAg7NQHiPUv13NFYBygIr+OYgpVNwSnGOH146BgCITSBAoMxMQGPTQ==
+"@rollup/plugin-eslint@8.0.5":
+  version "8.0.5"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-eslint/-/plugin-eslint-8.0.5.tgz#931d2177d5d919f6e7c733ab4e49ca0e6f22218c"
+  integrity sha512-cSasMRxV4lddMpjcHSN9QV4MCDxYQWuXhc3xa0lUuw+DEQuS0tNoKNZEzsEZqoEvs4KVkHgDpbhQ4jKU+AZ9iw==
   dependencies:
     "@rollup/pluginutils" "^4.0.0"
     eslint "^7.12.0"
